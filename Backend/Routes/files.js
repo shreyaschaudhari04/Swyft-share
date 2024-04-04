@@ -18,26 +18,43 @@ let upload = multer({
     limit: {fileSize: 1000000 * 100}
 }).single('myfile')
 
-router.post("/",  (req,res) => {
+
+router.post('/', (req, res) => {
     upload(req, res, async (err) => {
-
-        if (!req.file) {
-            return res.json({error: 'No Such  File or Image'})
-        }
-
-        if(err){
-            return res.status(500).send({ error: 'err.message' })
-        }
+      if (err) {
+        return res.status(500).send({ error: err.message });
+      }
         const file = new File({
-            filename : req.file.filename,
-            uuid: uuid4(),
+            filename: req.file.filename,
+            uuid: uuidv4(),
             path: req.file.path,
             size: req.file.size
         });
         const response = await file.save();
-        return res.json({file:`${process.env.APP_BASE_URL}/files/${response.uuid}`})
-    });
-})
+        res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}` });
+      });
+});
+
+// router.post("/",  (req,res) => {
+//     upload(req, res, async (err) => {
+
+//         if (!req.file) {
+//             return res.json({error: 'No Such  File or Image'})
+//         }
+
+//         if(err){
+//             return res.status(500).send({ error: 'err.message' })
+//         }
+//         const file = new File({
+//             filename : req.file.filename,
+//             uuid: uuid4(),
+//             path: req.file.path,
+//             size: req.file.size
+//         });
+//         const response = await file.save();
+//         return res.json({file:`${process.env.APP_BASE_URL}/files/${response.uuid}`})
+//     });
+// })
 
 router.post("/send", async (req,res) => {
     const { uuid, emailTo, emailFrom } = req.body;
