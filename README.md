@@ -33,3 +33,21 @@ Make sure you have the following installed:
 
    ```bash
    git clone https://github.com/your-username/File-Sharing-Website.git
+   
+2. **Install dependencies**:
+
+   ```bash
+   npm install
+   
+3. **Configure environment variables:**:
+   ```bash
+   PORT=5000
+   EMAIL_SERVICE=<Your Email Service>
+   EMAIL_USER=<Your Email>
+   EMAIL_PASS=<Your Email Password>
+
+4. **Run the app locally:**:
+   ```bash
+   cd backend
+   node server.js
+   
