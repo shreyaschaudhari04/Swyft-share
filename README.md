@@ -41,10 +41,11 @@ Make sure you have the following installed:
    
 3. **Configure environment variables:**:
    ```bash
-   PORT=5000
-   EMAIL_SERVICE=<Your Email Service>
-   EMAIL_USER=<Your Email>
-   EMAIL_PASS=<Your Email Password>
+   APP_BASE_URL=http://localhost:3000
+   SMTP_HOST=
+   SMTP_PORT=
+   MAIL_USER=
+   MAIL_PASS=
 
 4. **Run the app locally:**:
    ```bash
