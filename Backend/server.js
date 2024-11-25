@@ -12,8 +12,7 @@ connectDB();
 
 //Cors  Middleware
 const corsOption = {
-    // origin: process.env.ALLOWED_CLIENTS.split(',')
-    origin: '*'
+    origin: process.env.ALLOWED_CLIENTS.split(',')
 }
 
 app.use(cors(corsOption));
