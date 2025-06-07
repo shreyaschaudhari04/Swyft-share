@@ -22,6 +22,10 @@ app.use(express.json());
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
 
+app.get('/api/ping', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
 // Routes 
 app.use('/api/files', require('./Routes/files'));
 app.use('/files', require('./Routes/show'));
